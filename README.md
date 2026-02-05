@@ -1,5 +1,5 @@
 # Root_finder
-Codigos en python iterativos para buscar raices.
+Codigos en python iterativos para buscar raices reales en ecuaciones
 
 Tareas de Analisis Numerico de 5to semestre.
 
