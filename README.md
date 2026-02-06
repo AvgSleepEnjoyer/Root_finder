@@ -43,10 +43,10 @@ Si no la hay, selecciona otro rango de valores.
 Metodo por Punto Fijo
 Este metodo requiere una ecuacion x=g(x), requiere despejar en ecuaciones de grado 2
 
--Propones un valor inicial x=0, evaluas en g(0) = k
--Evaluas esa k en g(x) nuevamente
--Repite esto n veces necesarias o hasta cierto margen de error
--El resultado se crea una asintota en el valor de la raiz de f(x)
+- Propones un valor inicial x=0, evaluas en g(0) = k
+- Evaluas esa k en g(x) nuevamente
+- Repite esto n veces necesarias o hasta cierto margen de error
+- El resultado se crea una asintota en el valor de la raiz de f(x)
 
 ---
 
