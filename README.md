@@ -40,8 +40,8 @@ Si no la hay, selecciona otro rango de valores.
 
 ## 2. Punto Fijo
 
-Metodo por Punto Fijo
-Este metodo requiere una ecuacion x=g(x), requiere despejar en ecuaciones de grado 2
+Metodo por Punto Fijo.
+Este metodo requiere una ecuacion x=g(x), requiere despeje.
 
 - Propones un valor inicial x=0, evaluas en g(0) = k
 - Evaluas esa k en g(x) nuevamente
