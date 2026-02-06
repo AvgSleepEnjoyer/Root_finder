@@ -1,35 +1,66 @@
 # Root_finder
-Codigos en python iterativos para buscar raices.
+Códigos en Python iterativos para buscar raíces reales en ℝ².
 
-Tareas de Analisis Numerico de 5to semestre.
+Tareas de Análisis Numérico de 5.º semestre.
 
-1. Bisex-ion
+# Reglas:
+- Las ecuaciones tienen que tener una o más raíces reales. 
+- Las ecuaciones deberán tener de variable a x. 
+- La forma para resolver ecuaciones con igualdad a 0 es introducir su función de una de las siguientes maneras:  
+  2*x**2 - x - 2  
+  (x**2 - x - 2)/2  
+  x*exp(x) - 2*x  
 
-Metodo por Biseccion.
-Delimitas un rango, seleccionas el valor Max y min, evaluas la funcion en esos valores y encuentras la raiz.
-Pasos:
+---
 
--Escoges un rango [a,b]
--Evaluas f(a) y f(b) 
+## 1. Bisección
 
-si: f(a) * f(b)<0 entonces hay raiz         si no la hay, agarra otro rango de valores
+Método por Bisección.  
+Delimitas un rango, seleccionas el valor máximo y mínimo, evalúas la función en esos valores y encuentras la raíz.  
 
--Encontrar el punto medio
-m = |a-b|/2
+**Pasos:**
+- Escoges un rango [a, b].  
+- Evalúas f(a) y f(b).  
 
--Evaluas f(m)   Si: f(m)=0, m es la raiz, sino...
-Si f(m) tiene signo opuesto f(a) ó a f(b) se redefine el intervalo como [a,m] o [b,m]
+Si: f(a) * f(b) < 0 entonces hay raíz.  
+Si no la hay, selecciona otro rango de valores.  
 
--Repites escogiendo un punto medio para el nuevo [a,b]
+- Encuentras el punto medio:  
+  m = |a - b| / 2  
 
--Termina las iteraciones cuando encuentre la raiz, este dentro de un margen de error seleccionado o dentro de un numero de iteraciones
+- Evalúas f(m).  
+  Si f(m) = 0, m es la raíz.  
+  Si no, y f(m) tiene signo opuesto a f(a) o a f(b), se redefine el intervalo como [a, m] o [b, m].  
 
-2. Punto fijo
+- Repites escogiendo un punto medio para el nuevo [a, b].  
 
-Metodo por Punto Fijo
-Este metodo requiere una ecuacion x=g(x), requiere despejar en ecuaciones de grado 2
+- Terminas las iteraciones cuando se encuentre la raíz, esté dentro de un margen de error seleccionado o dentro de un número máximo de iteraciones.  
 
--Propones un valor inicial x=0, evaluas en g(0) = k
--Evaluas esa k en g(x) nuevamente
--Repite esto n veces necesarias o hasta cierto margen de error
--El resultado se crea una asintota en el valor de la raiz de f(x)
+---
+
+## 2. Punto Fijo
+
+Método por Punto Fijo.  
+Este método requiere una ecuación de la forma x = g(x), normalmente despejada a partir de ecuaciones de grado 2.  
+
+**Pasos:**
+- Propones un valor inicial, por ejemplo x = 0, y evalúas g(0) = k.  
+- Evalúas esa k en g(x) nuevamente.  
+- Repites este proceso n veces o hasta alcanzar un margen de error deseado.  
+- El resultado converge hacia un valor que corresponde a la raíz de f(x).  
+
+---
+
+## 3. Newton-Raphson (una variable, una ecuación)
+
+Método por Newton-Raphson.  
+Este método sirve para encontrar raíces de una sola ecuación con una sola variable. Se basa en aproximaciones sucesivas usando la derivada de la función.  
+
+**Pasos:**
+- Defines la función f(x).  
+- Calculas su derivada f'(x).  
+- Propones un valor inicial x0.  
+- Iteras con la fórmula:  
+- x1 = x0 - f(x0)/f'(x0)  
+- Repites el proceso hasta que la diferencia |x1 - x0| sea menor que el margen de error seleccionado o hasta llegar al número máximo de iteraciones.  
+- El resultado converge hacia la raíz de f(x).
