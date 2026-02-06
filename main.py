@@ -3,7 +3,7 @@ import sympy as sp      # https://docs.sympy.org/latest/guides/custom-functions.
 import os
 import time
 
-    # sympify transforma un tipo de dato valido a una funcion o expresion usable para sympy 
+    # sympify transforma un tipo de dato valido a una funcion o expresion usable para sympy  
 
 def biseccion(expr_str, a, b, margen_e, max_iter=100):
     # se define que x sea la variable

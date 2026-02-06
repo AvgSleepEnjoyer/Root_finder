@@ -1,5 +1,5 @@
 # Root_finder
-Códigos en Python iterativos para buscar raíces reales en ℝ².
+Codigos en python iterativos para buscar raices.
 
 Tareas de Análisis Numérico de 5.º semestre.
 
@@ -9,7 +9,7 @@ Tareas de Análisis Numérico de 5.º semestre.
 - La forma para resolver ecuaciones con igualdad a 0 es introducir su función de una de las siguientes maneras:  
   2*x**2 - x - 2  
   (x**2 - x - 2)/2  
-  x*exp(x) - 2*x  
+  x * exp(x) - 2 * x  
 
 ---
 
@@ -40,27 +40,10 @@ Si no la hay, selecciona otro rango de valores.
 
 ## 2. Punto Fijo
 
-Método por Punto Fijo.  
-Este método requiere una ecuación de la forma x = g(x), normalmente despejada a partir de ecuaciones de grado 2.  
+Metodo por Punto Fijo
+Este metodo requiere una ecuacion x=g(x), requiere despejar en ecuaciones de grado 2
 
-**Pasos:**
-- Propones un valor inicial, por ejemplo x = 0, y evalúas g(0) = k.  
-- Evalúas esa k en g(x) nuevamente.  
-- Repites este proceso n veces o hasta alcanzar un margen de error deseado.  
-- El resultado converge hacia un valor que corresponde a la raíz de f(x).  
-
----
-
-## 3. Newton-Raphson (una variable, una ecuación)
-
-Método por Newton-Raphson.  
-Este método sirve para encontrar raíces de una sola ecuación con una sola variable. Se basa en aproximaciones sucesivas usando la derivada de la función.  
-
-**Pasos:**
-- Defines la función f(x).  
-- Calculas su derivada f'(x).  
-- Propones un valor inicial x0.  
-- Iteras con la fórmula:  
-- x1 = x0 - f(x0)/f'(x0)  
-- Repites el proceso hasta que la diferencia |x1 - x0| sea menor que el margen de error seleccionado o hasta llegar al número máximo de iteraciones.  
-- El resultado converge hacia la raíz de f(x).
+-Propones un valor inicial x=0, evaluas en g(0) = k
+-Evaluas esa k en g(x) nuevamente
+-Repite esto n veces necesarias o hasta cierto margen de error
+-El resultado se crea una asintota en el valor de la raiz de f(x)
