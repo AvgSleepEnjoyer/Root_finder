@@ -47,3 +47,19 @@ Este metodo requiere una ecuacion x=g(x), requiere despejar en ecuaciones de gra
 -Evaluas esa k en g(x) nuevamente
 -Repite esto n veces necesarias o hasta cierto margen de error
 -El resultado se crea una asintota en el valor de la raiz de f(x)
+
+---
+
+## 3. Newton-Raphson (una variable, una ecuación)
+
+Método por Newton-Raphson.  
+Este método sirve para encontrar raíces de una sola ecuación con una sola variable. Se basa en aproximaciones sucesivas usando la derivada de la función.  
+
+**Pasos:**
+- Defines la función f(x).  
+- Calculas su derivada f'(x).  
+- Propones un valor inicial x0.  
+- Iteras con la fórmula:  
+  x1 = x0 - f(x0)/f'(x0)  
+- Repites el proceso hasta que la diferencia |x1 - x0| sea menor que el margen de error seleccionado o hasta llegar al número máximo de iteraciones.  
+- El resultado converge hacia la raíz de f(x).  
