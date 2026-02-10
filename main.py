@@ -90,6 +90,34 @@ def newthon_raphson_una_x(expr_str, x0, margen_e, max_iter=100):
         x0 = x1
 
 
+
+
+def newthon_raphsons(varis, arr, raices, margen_e, max_iter=100):
+    print
+
+    X = sp.Matrix(varis)
+    F = sp.Matrix(arr)
+    J = F.jacobian(X)       # https://docs.sympy.org/latest/modules/matrices/matrices.html#sympy.matrices.matrixbase.MatrixBase.jacobian
+
+
+    x0 = sp.Matrix(raices)                # https://stackoverflow.com/questions/26669706/evaluating-jacobian-at-specific-points-using-sympy
+
+    for i in range(max_iter):                               # https://docs.sympy.org/latest/modules/matrices/matrices.html#operations-on-entries
+        F_eval =  F_eval = F.subs(dict(zip(varis, x0)))     # https://www.w3schools.com/python/ref_func_zip.asp
+        J_eval = J.subs(dict(zip(varis, x0)))
+
+        x1 = x0 - J_eval.inv() * F_eval         # inv() es inversa
+        
+        if(x1-x0).norm() < margen_e:
+            print(f"Converge en la iteracion {i+1}:\n Raiz = {x1}")
+            return x1
+        x0=x1
+        print(f"Iteracion {i+1}: {x1}")
+
+    print("El sistema no converge en 100 iteraciones")
+    return x0
+
+
 # Menu
 os.system("cls");
 
@@ -132,7 +160,25 @@ match opcion:
 
         raiz = newthon_raphson_una_x(funcion, x0, margen_e)
         print("\nRaiz aproximada es:", raiz)
+
     case 4:
-        print
+        n_funciones = int(input("Newton-Raphson consiste en encontrar las intersecciones entre n cantidad de ecuaciones\n\nNumero de funciones: "))
+        varis = []
+        arr = []
+        raices = []
+
+        for i in range (n_funciones):
+            varis.append(input(f"Variable {i+1}: "))
+
+        print("ejemplo1: (x-2)**2 + (y-1)**2 + x*y -3\nejemplo2: x*exp(x+y) + y -3")
+        for i in range (n_funciones):
+            arr.append(sp.sympify(input(f"Ingresa la funcion: ")))
+
+        for i in range(n_funciones):
+            raices.append(float(input(f"Raiz aproximada de la funcion {i+1}: ")))
+
+        margen_e = float(input("Ingresa el margen de error (ejemplo: 0.0001): "))
+        raiz= newthon_raphsons(varis, arr, raices, margen_e)
+
 
 

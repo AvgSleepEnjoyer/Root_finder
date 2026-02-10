@@ -63,3 +63,18 @@ Este método sirve para encontrar raíces de una sola ecuación con una sola var
   x1 = x0 - f(x0)/f'(x0)  
 - Repites el proceso hasta que la diferencia |x1 - x0| sea menor que el margen de error seleccionado o hasta llegar al número máximo de iteraciones.  
 - El resultado converge hacia la raíz de f(x).  
+
+## 4. Newton-Raphson (Sistema de ecuaciones no lineales)
+
+Método por Newton-Raphson.  
+
+Funciona cuando el número de ecuaciones es igual al número de variables, ya que se construye el Jacobiano (matriz de derivadas parciales) y se utiliza en cada iteración para actualizar las aproximaciones.
+- Se ingresan las variables, las funciones y las aproximaciones iniciales.
+- El algoritmo evalúa las funciones y el Jacobiano en cada paso.
+- Se actualiza el vector de soluciones hasta que la diferencia entre iteraciones sea menor al margen de error definido, o hasta alcanzar el número máximo de iteraciones.
+- Si converge, devuelve la raíz aproximada del sistema.
+Este método es útil para encontrar soluciones numéricas de sistemas no lineales, siempre que se proporcione una buena aproximación inicial y un margen de error adecuado.
+
+x_{k+1}=x_k-J(x_k)^{-1}\cdot F(x_k)
+
+
