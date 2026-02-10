@@ -9,7 +9,7 @@ Tareas de Análisis Numérico de 5.º semestre.
 - La forma para resolver ecuaciones con igualdad a 0 es introducir su función de una de las siguientes maneras:  
   `2*x**2-x-2`
   `(x**2 - x - 2)/2`
-  `x * exp(x) - 2 * x`
+  `x * exp(x) - pi * x`
 
 ---
 
@@ -88,6 +88,8 @@ El método de Jacobi es un algoritmo iterativo para resolver sistemas lineales A
 Cada variable se actualiza usando únicamente los valores de la iteración anterior, lo que lo hace más sencillo pero a veces más lento que Gauss–Seidel.
 Condición de convergencia
 El método converge si la matriz A es diagonalmente dominante.
+
+---
 
 ## 6. Método de Gauss-Seidel con SymPy.
 
