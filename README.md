@@ -79,3 +79,20 @@ Este método es útil para encontrar soluciones numéricas de sistemas no lineal
 
 x(k+1) = x(k) - J(x(k))^-1 * F(x(k))
 
+---
+
+## 5. Método de Jacobi con SymPy
+
+Descripción
+El método de Jacobi es un algoritmo iterativo para resolver sistemas lineales Ax=b.
+Cada variable se actualiza usando únicamente los valores de la iteración anterior, lo que lo hace más sencillo pero a veces más lento que Gauss–Seidel.
+Condición de convergencia
+El método converge si la matriz A es diagonalmente dominante.
+
+## 6. Método de Gauss-Seidel con SymPy.
+
+Método de Gauss–Seidel
+- Cada variable nueva se calcula y se usa inmediatamente para las siguientes dentro de la misma iteración.
+- Esto suele acelerar la convergencia respecto a Jacobi.
+- Conceptualmente, mezcla valores viejos y nuevos en cada paso.
+

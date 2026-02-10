@@ -90,8 +90,6 @@ def newthon_raphson_una_x(expr_str, x0, margen_e, max_iter=100):
         x0 = x1
 
 
-
-
 def newthon_raphsons(varis, arr, raices, margen_e, max_iter=100):
     print
 
@@ -102,7 +100,8 @@ def newthon_raphsons(varis, arr, raices, margen_e, max_iter=100):
 
     x0 = sp.Matrix(raices)                # https://stackoverflow.com/questions/26669706/evaluating-jacobian-at-specific-points-using-sympy
 
-    for i in range(max_iter):                               # https://docs.sympy.org/latest/modules/matrices/matrices.html#operations-on-entries
+    for i in range(max_iter): 
+        time.sleep(0.09)                              # https://docs.sympy.org/latest/modules/matrices/matrices.html#operations-on-entries
         F_eval =  F_eval = F.subs(dict(zip(varis, x0)))     # https://www.w3schools.com/python/ref_func_zip.asp
         J_eval = J.subs(dict(zip(varis, x0)))
 
@@ -118,6 +117,69 @@ def newthon_raphsons(varis, arr, raices, margen_e, max_iter=100):
     return x0
 
 
+def es_diagonalmente_dominante(A):
+    # Verifica si la matriz A es diagonalmente dominante por filas.
+    n = A.rows
+    for i in range(n):
+        suma = sum(abs(A[i, j]) for j in range(n) if j != i)
+        if abs(A[i, i]) < suma:
+            return False
+    return True
+
+
+def jacobi(A, b, x0, margen_e, max_iter=100):
+    n = A.rows
+    x = sp.Matrix(x0)
+
+    # Verificación de diagonalmente dominante
+    if not es_diagonalmente_dominante(A):
+        print("La matriz no es diagonalmente dominante. El metodo puede no converger.")
+
+    for k in range(max_iter):
+        x_new = sp.zeros(n, 1)
+        for i in range(n):
+            suma = sum(A[i, j] * x[j] for j in range(n) if j != i)    # hace el y1 dependiente de x, y el x2 dependiente de y
+            x_new[i] = (b[i] - suma) / A[i, i]
+
+        # criterio de parada: diferencia entre iteraciones
+        if (x_new - x).norm() < margen_e:
+            print(f"Convergió en iteración {k+1}: {x_new}")
+            return x_new
+
+        x = x_new
+        print(f"Iteración {k+1}: {x}")
+        time.sleep(0.09)
+
+    print("No convergió en el número máximo de iteraciones")
+    return x
+
+
+def gauss_seidel(A, b, x, margen_e, max_iter=100):
+    n = A.rows
+    x = sp.Matrix(x0)
+
+    if not es_diagonalmente_dominante(A):
+        print("La matriz no es diagonalmente dominante. El metodo puede no converger.")
+
+    for k in range(max_iter):
+        x_new = x.copy()
+        for i in range(n):
+            suma = sum(A[i, j] * x_new[j] for j in range(n) if j != i)
+            x_new[i] = (b[i] - suma) / A[i, i]
+
+        if (x_new - x).norm() < margen_e:
+            print(f"Convergió en iteración {k+1}: {x_new}")
+            return x_new
+
+        x = x_new
+        print(f"Iteración {k+1}: {x}")
+        time.sleep(0.09)
+
+    print("No convergió en el número máximo de iteraciones")
+    return x
+
+
+
 # Menu
 os.system("cls");
 
@@ -126,6 +188,8 @@ print("1. Biseccion")
 print("2. Punto fijo")
 print("3. Newton-Raphson para una variable")
 print("4. Newton-Raphson para sistema de ecuaciones")
+print("5. Método de Jacobi")
+print("6. Método de Gauss-Seidel")
 opcion = int(input("\n"))
 
 match opcion:
@@ -150,8 +214,6 @@ match opcion:
 
         raiz = punto_fijo(funcion, g_funcion, x0, margen_e)
         print("\nRaiz aproximada:", raiz)
-
-
 
     case 3:
         funcion = input("Ingresa la funcion f(x) (ejemplo: exp(x) - pi*x): ")
@@ -180,5 +242,53 @@ match opcion:
         margen_e = float(input("Ingresa el margen de error (ejemplo: 0.0001): "))
         raiz= newthon_raphsons(varis, arr, raices, margen_e)
 
+    case 5:
+        n = int(input("Numero de variables: "))
+        A = []
+        b = []
 
+        print("Introduce la matriz A fila por fila:\nEjemplo: 5 1\n1 4")
+        for i in range(n):
+            fila = list(map(float, input(f"Fila {i+1}: ").split()))
+            A.append(fila)
 
+        print("Introduce el vector b:\nEjemplo: 7\n5")
+        for i in range(n):
+            bi = float(input(f"b[{i+1}]: "))
+            b.append(bi)
+
+        x0 = list(map(float, input("Vector inicial (separado por espacios)\nEjemplo 0 0\n: ").split()))
+
+        A = sp.Matrix(A)
+        b = sp.Matrix(b)
+
+        margen_e = float(input("Ingresa el margen de error (ejemplo: 0.0001): "))
+
+        sol = jacobi(A, b, x0, margen_e)
+        print("Solucion aproximada:", sol)
+
+    case 6:
+
+        n = int(input("Número de variables: "))
+        A = []
+        b = []
+
+        print("Introduce la matriz A fila por fila:\nEjemplo: 5 1\n1 4")
+        for i in range(n):
+            fila = list(map(float, input(f"Fila {i+1}: ").split()))
+            A.append(fila)
+
+        print("Introduce el vector b:\nEjemplo: 7\n5")
+        for i in range(n):
+            bi = float(input(f"b[{i+1}]: "))
+            b.append(bi)
+
+        x0 = list(map(float, input("Vector inicial (separado por espacios)\nEjemplo 0 0\n: ").split()))
+
+        A = sp.Matrix(A)
+        b = sp.Matrix(b)
+
+        margen_e = float(input("Ingresa el margen de error (ejemplo: 0.0001): "))
+
+        sol = gauss_seidel(A, b, x0, margen_e)
+        print("Solucion aproximada:", sol)
