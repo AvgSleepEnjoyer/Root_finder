@@ -5,8 +5,7 @@ Tareas de Análisis Numérico de 5.º semestre.
 
 # Reglas:
 
-- En la terminal del codigo correr ```bash
-pip install -r requirements.txt
+- En la terminal del codigo correr: pip install -r requirements.txt
 
 - Las ecuaciones tienen que tener una o más raíces reales. 
 - Las ecuaciones deberán tener de variable a x. 
