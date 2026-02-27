@@ -4,6 +4,8 @@ Codigos en python iterativos para buscar raices.
 Tareas de Análisis Numérico de 5.º semestre.
 
 # Reglas:
+
+- En la terminal del codigo correr ```bash pip install -r requirements.txt
 - Las ecuaciones tienen que tener una o más raíces reales. 
 - Las ecuaciones deberán tener de variable a x. 
 - La forma para resolver ecuaciones con igualdad a 0 es introducir su función de una de las siguientes maneras:  
